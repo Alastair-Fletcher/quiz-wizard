@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import Navbar from './components/Navbar';
+import PlayQuiz from './components/PlayQuiz';
+import CreateQuiz from './components/CreateQuiz';
+import { getQuestions } from './apiServices';
 
 function App() {
+  const [questions, setQuestions] = useState([]);
+
+  useEffect(() => {
+    getQuestions().then((questions) => setQuestions(questions));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    questions.length && (
+      <Router>
+        <>
+          <h1>Quiz</h1>
+          <Navbar />
+          <Routes>
+            <Route
+              path="/play"
+              element={<PlayQuiz questions={questions} />}
+            ></Route>
+            <Route path="/create" element={<CreateQuiz />}></Route>
+          </Routes>
+        </>
+      </Router>
+    )
   );
 }
 
