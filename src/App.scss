@@ -1,0 +1,40 @@
+body {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+}
+.create-quiz > form {
+  display: flex;
+  flex-direction: column;
+
+  input[type='text'] {
+    // width: 90%;
+    height: 3rem;
+  }
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+
+  .option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+
+    input[type='text'] {
+      width: 90%;
+      height: 3rem;
+    }
+
+    .radios {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
