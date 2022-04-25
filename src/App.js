@@ -1,5 +1,6 @@
 import './App.scss';
-import { useEffect, useState } from 'react';
+
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
@@ -15,21 +16,15 @@ function App() {
   }, []);
 
   return (
-    questions.length && (
-      <Router>
-        <>
-          <h1>Quiz</h1>
-          <Navbar />
-          <Routes>
-            <Route
-              path="/play"
-              element={<PlayQuiz questions={questions} />}
-            ></Route>
-            <Route path="/create" element={<CreateQuiz />}></Route>
-          </Routes>
-        </>
-      </Router>
-    )
+    <Router>
+      <>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<PlayQuiz questions={questions} />} />
+          <Route path="/create" element={<CreateQuiz />} />
+        </Routes>
+      </>
+    </Router>
   );
 }
 
