@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 // import { getQuestions } from '../apiServices';
 // import Question from './Question';
@@ -5,7 +6,6 @@ import React from 'react';
 function SelectCategory(props) {
   function handleChange(event) {
     const category = event.target.value;
-    // console.log(category);
     props.setCategory(category);
     // return category;
   }
@@ -21,18 +21,17 @@ function SelectCategory(props) {
   });
 
   return (
-    <div>
+    <div className="px-8 pt-8">
       <select
         name="categories"
         id="categories"
         onChange={handleChange}
-        className="dropdown dropdown-right"
+        className="select select-primary w-full"
       >
         {uniqueCategories.map((category) => {
           return <option value={category}>{category}</option>;
         })}
       </select>
-      {/* <Question /> */}
     </div>
   );
 }
