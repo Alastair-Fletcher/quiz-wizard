@@ -1,30 +1,30 @@
-import React from 'react';
+/* eslint-disable */
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
-  //TODO - 'fix darkMode toggle --memoize????';
-  function darkMode() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  function toggleDarkMode() {
     const html = document.getElementById('html');
-    let isOn = false;
-    if (!isOn) {
-      html.setAttribute('data-theme', 'forest');
-      isOn = true;
-    } else {
-      html.setAttribute('data-theme', 'cupcake');
-      isOn = false;
-    }
+    setDarkMode((prevMode) => {
+      return !prevMode;
+    });
+    darkMode
+      ? html.setAttribute('data-theme', 'pastel')
+      : html.setAttribute('data-theme', 'neon');
   }
 
   return (
     <nav className="navbar pt-8 px-8 pb-0">
       <Link to="/">
-        <button className="btn btn-primary">PLAY</button>
+        <button className="btn btn-primary btn-wide mr-8">PLAY</button>
       </Link>
       <Link to="/create">
-        <button className="btn btn-secondary">CREATE</button>
+        <button className="btn btn-secondary btn-wide">CREATE</button>
       </Link>
-      <label className="swap swap-rotate ml-auto" onClick={darkMode}>
-        <input type="checkbox" />
+      <label className="swap swap-rotate ml-auto">
+        <input type="checkbox" onClick={toggleDarkMode} />
         <svg
           className="swap-on fill-current w-10 h-10"
           xmlns="http://www.w3.org/2000/svg"
