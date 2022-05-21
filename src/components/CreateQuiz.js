@@ -18,38 +18,38 @@ function CreateQuiz({ setFetchQuestions }) {
     console.log(checked);
   };
 
-  function submitQuestion(question) {
-    question.preventDefault();
+  function submitQuestion(e) {
+    e.preventDefault();
     const newQuestion = {
-      category: question.target.category.value.toLowerCase(),
-      question: question.target.question.value,
+      category: e.target.category.value.toLowerCase(),
+      question: e.target.question.value,
       a: {
-        answer: question.target.a.value.toLowerCase(),
-        correctAnswer: question.target.correctA.checked,
+        answer: e.target.a.value.toLowerCase(),
+        correctAnswer: e.target.correctA.checked,
       },
       b: {
-        answer: question.target.b.value.toLowerCase(),
-        correctAnswer: question.target.correctB.checked,
+        answer: e.target.b.value.toLowerCase(),
+        correctAnswer: e.target.correctB.checked,
       },
       c: {
-        answer: question.target.c.value.toLowerCase(),
-        correctAnswer: question.target.correctC.checked,
+        answer: e.target.c.value.toLowerCase(),
+        correctAnswer: e.target.correctC.checked,
       },
       d: {
-        answer: question.target.d.value.toLowerCase(),
-        correctAnswer: question.target.correctD.checked,
+        answer: e.target.d.value.toLowerCase(),
+        correctAnswer: e.target.correctD.checked,
       },
     };
-    // TODO reset radio buttons
+
     postQuestion(newQuestion)
       .then((dbQuestion) => {
-        setQuestions((prevQuestions) => [...prevQuestions, dbQuestion]);
-        question.target.category.value = '';
-        question.target.question.value = '';
-        question.target.a.value = '';
-        question.target.b.value = '';
-        question.target.c.value = '';
-        question.target.d.value = '';
+        setQuestions((questions) => [...questions, dbQuestion]);
+        e.target.category.value = '';
+        e.target.question.value = '';
+        e.target.a.value = '';
+        e.target.b.value = '';
+        e.target.c.value = '';
+        e.target.d.value = '';
         setFetchQuestions((prev) => {
           return !prev;
         });
