@@ -1,16 +1,13 @@
 {
-  "name": "quiz-wizard",
+  "name": "quizmate-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
-    "cors": "^2.8.5",
     "daisyui": "^2.14.1",
-    "express": "^4.17.3",
-    "mongoose": "^6.3.0",
-    "morgan": "^1.10.0",
+    "lodash.shuffle": "^4.2.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
@@ -19,7 +16,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "server": "nodemon ./server/server.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -46,7 +42,6 @@
   "devDependencies": {
     "autoprefixer": "^10.4.4",
     "eslint": "^8.14.0",
-    "nodemon": "^2.0.15",
     "postcss": "^8.4.12",
     "tailwindcss": "^3.0.24"
   }
