@@ -1,35 +1,35 @@
-/* eslint-disable */
 import React from 'react';
-// import { getQuestions } from '../apiServices';
-// import Question from './Question';
 
-function SelectCategory(props) {
-  function handleChange(event) {
+function SelectCategory({ questions, setCategory }) {
+  function changeCategory(event) {
     const category = event.target.value;
-    props.setCategory(category);
-    // return category;
+    setCategory(category);
   }
 
-  // get unique Q categories to select
   const uniqueCategories = [];
-  props.questions.filter((question) => {
+  questions.filter((question) => {
     const isDuplicate = uniqueCategories.includes(question.category);
     if (!isDuplicate) {
       uniqueCategories.push(question.category);
-      return true;
     }
+    return true;
   });
 
   return (
     <div className="px-8 pt-8">
       <select
+        data-testid="categories"
         name="categories"
         id="categories"
-        onChange={handleChange}
+        onChange={changeCategory}
         className="select select-primary w-full"
       >
         {uniqueCategories.map((category) => {
-          return <option value={category}>{category}</option>;
+          return (
+            <option value={category} key={category}>
+              {category}
+            </option>
+          );
         })}
       </select>
     </div>

@@ -1,27 +1,27 @@
-/* eslint-disable */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   function toggleDarkMode() {
     const html = document.getElementById('html');
     setDarkMode((prevMode) => {
       return !prevMode;
     });
+
     darkMode
-      ? html.setAttribute('data-theme', 'pastel')
-      : html.setAttribute('data-theme', 'neon');
+      ? html.setAttribute('data-theme', 'darkTheme')
+      : html.setAttribute('data-theme', 'lightTheme');
   }
 
   return (
     <nav className="navbar pt-8 px-8 pb-0">
       <Link to="/">
-        <button className="btn btn-primary btn-wide mr-8">PLAY</button>
+        <button className="btn btn-error btn-wide mr-8">PLAY</button>
       </Link>
       <Link to="/create">
-        <button className="btn btn-secondary btn-wide">CREATE</button>
+        <button className="btn btn-success btn-wide">CREATE</button>
       </Link>
       <label className="swap swap-rotate ml-auto">
         <input type="checkbox" onClick={toggleDarkMode} />
