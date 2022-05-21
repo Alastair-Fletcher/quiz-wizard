@@ -14,10 +14,13 @@ app.use(router);
 
 (async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/QuizWizard', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(
+      'mongodb+srv://alastairfletcher:mongomongo@cluster0.dofhv.mongodb.net/QuizWizz?retryWrites=true&w=majority',
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    );
     mongoose.connection.on('error', console.error);
     console.log('db connected');
     app.listen(PORT, () => {
